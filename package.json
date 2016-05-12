@@ -1,0 +1,21 @@
+{
+  "name": "rxjsplayground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "jspm": {
+    "name": "rxjsplayground",
+    "main": "rxjsplayground.js",
+    "directories": {
+      "lib": "src"
+    },
+    "devDependencies": {
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.10"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Rasmuson <danielrasmuson@gmail.com> (http://danielrasmuson.com/)",
+  "license": "ISC"
+}
