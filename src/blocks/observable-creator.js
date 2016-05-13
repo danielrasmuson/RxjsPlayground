@@ -13,12 +13,12 @@ proto.createdCallback = function() {
   // dont change formatting here
 var defaultObservable =
 `Rx.Observable.create((observer)=>{
-  observer.next(15);
-  observer.next(30);
-  observer.next(45);
-  observer.next(65);
-  observer.next(80);
-  observer.complete();
+    observer.next(15);
+    observer.next(30);
+    observer.next(45);
+    observer.next(65);
+    observer.next(80);
+    observer.complete();
 })`
 
   const root = this.createShadowRoot();

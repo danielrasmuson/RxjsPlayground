@@ -21,10 +21,10 @@ proto.createdCallback = function() {
 };
 
 proto.attributeChangedCallback = (attrName, oldVal, newVal)=>{
-  console.log('LineChart Attr Change', attrName, oldVal, newVal);
   if (attrName = 'data-observable'){
     // The code is passed in as an observable which we just subscribe to
     try{
+      console.log('Running Observable', newVal);
       eval(newVal).subscribe((number)=>{
         lineChart.data.datasets[0].data = lineChart.data.datasets[0].data.slice(1, 5).concat(number);
         lineChart.update();
