@@ -2,19 +2,25 @@ Demo
 
 ```
 .map((result)=>{
-    return Rx.Observable.of(result).delay(1000);
+  return result*0.1;
 })
 ```
 
 ```
 .map((result)=>{
-    return Rx.Observable.of(result).delay(1000);
+    return Rx.Observable.of(result).delay(500);
+})
+```
+
+```
+.map((result)=>{
+    return Rx.Observable.of(result).delay(500);
 }).concatAll()
 ```
 
 ```
 .concatMap((result)=>{
-    return Rx.Observable.of(result).delay(1000);
+    return Rx.Observable.of(result).delay(500);
 })
 ```
 

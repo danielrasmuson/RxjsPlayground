@@ -1,10 +1,9 @@
 import * as _ from 'lodash';
 
 function formatCode(text){
-  const hackToMakeSureInputChanges = _.times(_.random(1000), ()=>'').join(' ');
   return '<span>'+_.trim(
       text.replace(/ /g, '&nbsp;').split('\n').join('<br>')
-    )+hackToMakeSureInputChanges+'</span>'
+    )+'</span>'
 }
 
 var proto = Object.create(HTMLElement.prototype);
@@ -20,7 +19,7 @@ formatCode(`.map((result)=>{
   // root = this.createShadowRoot();
   this.innerHTML = `
     <div
-      style="background-color: ${color}; width: 300px; color: white;"
+      style="background-color: ${color}; width: 500px; color: white;"
       contenteditable="true"
       class="text">
       ${defaultText}

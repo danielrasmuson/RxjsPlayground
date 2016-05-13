@@ -12,7 +12,7 @@ proto.createdCallback = function() {
   const lineChart = root.querySelector('line-chart');
   const observableCreator = root.querySelector('observable-creator');
   observableCreator.onObservableCreated((observableCodeString)=>{
-    lineChart.setAttribute('data-observable', observableCodeString);
+    lineChart.newDataSubscription(observableCodeString)
   });
 
 
