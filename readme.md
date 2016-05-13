@@ -52,6 +52,24 @@ Rx.Observable.fromEvent(document.querySelector('line-chart'), 'mousemove')
 }))
 ```
 
+Clicks on document
+```
+Rx.Observable.fromEvent(document, 'click')
+```
+```
+.buffer(Rx.Observable.interval(1000))
+```
+```
+.map((result)=>{
+  return result.length*10;
+})
+```
+```
+.filter((result)=>{
+  return result > 0;
+})
+```
+
 
 bugs
 - you cant run the same observable twice
