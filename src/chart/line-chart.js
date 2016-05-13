@@ -20,10 +20,15 @@ proto.createdCallback = function() {
   });
 };
 
+var lastSubscription;
 proto.newDataSubscription = (observableString)=>{
   try{
+
     // console.log('Running Observable', observableString);
-    eval(observableString).subscribe((number)=>{
+    if (lastSubscription){
+      lastSubscription.unsubscribe();
+    }
+    var lastSubscription = eval(observableString).subscribe((number)=>{
       lineChart.data.datasets[0].data = lineChart.data.datasets[0].data.slice(1, 5).concat(number);
       lineChart.update();
     });

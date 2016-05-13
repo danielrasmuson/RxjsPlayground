@@ -11,6 +11,20 @@ Demo
 ```
 
 ```
+Rx.Observable.create((observer)=>{
+   setInterval(()=>{
+     observer.next(_.random(0, 100));
+   }, 1000)
+})
+```
+
+```
+.filter((result)=>{
+  return result > 50;
+})
+```
+
+```
 .map((result)=>{
     return Rx.Observable.of(result).delay(500);
 })
@@ -27,6 +41,7 @@ Demo
     return Rx.Observable.of(result).delay(500);
 })
 ```
+
 
 
 

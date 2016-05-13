@@ -2,7 +2,6 @@ export const data = {
     labels: ["0", "1", "2", "3", "4"],
     datasets: [
       {
-        label: 'data',
         fill: false,
         lineTension: 0.1,
         backgroundColor: "rgba(75,192,192,0.4)",
@@ -34,5 +33,8 @@ export const options = {
         suggestedMax: 100,
       }
     }]
+  },
+  legend: {
+   display: false
   }
 };
