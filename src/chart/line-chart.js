@@ -6,7 +6,7 @@ var proto = Object.create(HTMLElement.prototype);
 var lineChart;
 proto.createdCallback = function() {
   this.innerHTML = `
-    <div>
+    <div style="width: 500px;">
       <canvas></canvas>
     </div>
   `;
