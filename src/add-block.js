@@ -1,13 +1,14 @@
 var proto = Object.create(HTMLElement.prototype);
 
-function addBlock(){
-  alert('add block')
-}
 
 proto.createdCallback = function() {
-  var shadow = this.createShadowRoot();
-  shadow.innerHTML = `
-    <button click="addBlock()">Add Block</button>
+  this.addBlock = ()=>{
+    alert('add block');
+  }
+
+  // var shadow = this.createShadowRoot();
+  this.innerHTML = `
+    <button onclick="this.parentNode.addBlock()">Add Block</button>
   `;
 };
 

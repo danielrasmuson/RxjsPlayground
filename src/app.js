@@ -1,1 +1,1 @@
-import 'add-block'; 
+import './add-block.js'; 
