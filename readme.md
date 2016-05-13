@@ -33,8 +33,24 @@ Rx.Observable.create((observer)=>{
 ```
 
 
+```
+Rx.Observable.fromEvent(document.querySelector('line-chart'), 'mousemove')
+```
 
 
+```
+.map((event)=>{
+  return event.screenX;
+})
+```
+
+```
+.merge(Rx.Observable.create((observer)=>{
+   setInterval(()=>{
+     observer.next(_.random(0, 100));
+   }, 1000)
+}))
+```
 
 
 bugs
