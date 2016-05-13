@@ -5,7 +5,9 @@ var proto = Object.create(HTMLElement.prototype);
 proto.createdCallback = function() {
   const root = this.createShadowRoot();
   root.innerHTML = `
-    <canvas></canvas>
+    <div>
+      <canvas></canvas>
+    </div>
   `;
 
   var data = {
@@ -35,11 +37,13 @@ proto.createdCallback = function() {
     ]
   };
 
+  console.log(root.querySelector('canvas'))
+  debugger;
   var ctx = root.querySelector('canvas').getContext('2d')
-  // var myLineChart = new Chart(ctx, {
-  //   type: 'line',
-  //   data: data
-  //   // options: options
-  // });
+  var myLineChart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: {}
+  });
 };
 document.registerElement('line-chart', {prototype: proto});
