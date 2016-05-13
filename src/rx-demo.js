@@ -17,8 +17,12 @@ proto.createdCallback = function() {
 
   root.innerHTML = `
     <add-block-button></add-block-button>
-    <line-chart data-observable="${codeString}"></line-chart>
+    <line-chart></line-chart>
   `;
+
+
+  const lineChart = root.querySelector('line-chart');
+  lineChart.setAttribute('data-observable', codeString);
 };
 document.registerElement('rx-demo', {prototype: proto});
 
