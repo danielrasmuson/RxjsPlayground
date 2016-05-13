@@ -10,7 +10,7 @@ proto.onObservableCreated = (registerCallback)=>{
 }
 
 proto.createdCallback = function() {
-  var codeString = `
+  var defaultObservable = `
     Rx.Observable.create((observer)=>{
       observer.next(15);
       observer.next(30);
@@ -20,20 +20,25 @@ proto.createdCallback = function() {
     });
   `
 
-  setTimeout(()=>{
-    proto.created(codeString);
-  }, 10)
-
   const root = this.createShadowRoot();
   root.innerHTML = `
     <button onclick="this.parentNode.addBlock()">Add Block</button>
     <ul id="blocks"></ul>
   `;
   const blocks = root.querySelector('#blocks');
-  root.addBlock = ()=>{
-    blocks.appendChild(document.createElement('rx-block'));
+  root.addBlock = (defaultCodeString)=>{
+    var block = document.createElement('rx-block');
+    if (defaultCodeString){
+      block.setAttribute('value', defaultCodeString);
+    }
+    blocks.appendChild(block);
+
+    // Or add that observable watch children in the scroll manager
+    // here loop through nodes and put text togeather for createion
+    // proto.created(codeString);
   }
 
+  root.addBlock(defaultObservable)
 
 };
 
