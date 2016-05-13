@@ -33,10 +33,11 @@ proto.createdCallback = function() {
     }
     blocks.appendChild(block);
 
-    // Or add that observable watch children in the scroll manager
-    // here loop through nodes and put text togeather for createion
-    // proto.created(codeString);
-    // roto.querySelector()
+    // TODO
+    // maybe watch children for changes instead
+    setTimeout(()=>{
+      proto.created(_.trim(blocks.textContent))
+    }, 0) 
   }
 
   root.addBlock(defaultObservable)
