@@ -11,10 +11,10 @@ proto.createdCallback = function() {
   `;
 
   var data = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ["0", "1", "2", "3", "4"],
     datasets: [
       {
-        label: "My First dataset",
+        label: 'data',
         fill: false,
         lineTension: 0.1,
         backgroundColor: "rgba(75,192,192,0.4)",
@@ -32,18 +32,35 @@ proto.createdCallback = function() {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: [65, 59, 80, 81, 56, 55, 40],
+        data: [0, 0, 0, 0, 0],
       }
     ]
   };
 
-  console.log(root.querySelector('canvas'))
-  debugger;
+  var options = {
+    scales: {
+      yAxes: [{
+        display: true,
+        ticks: {
+          suggestedMin: 0,
+          suggestedMax: 100,
+        }
+      }]
+    }
+  };
+
   var ctx = root.querySelector('canvas').getContext('2d')
   var myLineChart = new Chart(ctx, {
     type: 'line',
     data: data,
-    options: {}
+    options: options
   });
+
+  setInterval(()=>{
+    const newNumbers = [_.random(0, 100)]
+    myLineChart.data.datasets[0].data = myLineChart.data.datasets[0].data.slice(1, 5).concat(newNumbers);
+    myLineChart.update();
+  }, 1000)
+
 };
 document.registerElement('line-chart', {prototype: proto});
