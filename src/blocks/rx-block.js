@@ -4,11 +4,14 @@ var textNode;
 proto.createdCallback = function() {
   const colors = ['#E53935', '#D81B60', '#8E24AA', '#5E35B1', '#3949AB', '#1E88E5', '#039BE5', '#00ACC1'];
   const color = colors[_.random(colors.length - 1)];
-  const defaultText ='.map((result)=>{return result;})';
+  const defaultText ='<span>.map((result)=>{return result;})</span>';
 
   // root = this.createShadowRoot();
   this.innerHTML = `
-    <div style="background-color: ${color}; width: 300px; color: white;" contenteditable="true" class="text">
+    <div
+      style="background-color: ${color}; width: 300px; color: white;"
+      contenteditable="true"
+      class="text">
       ${defaultText}
     </div>
   `;
@@ -17,7 +20,9 @@ proto.createdCallback = function() {
 
 proto.attributeChangedCallback = (attrName, oldVal, newVal)=>{
   if (attrName === 'value'){
-    textNode.textContent = newVal;
+    textNode.innerHTML = _.trim(
+      newVal.replace(/ /g, '&emsp;').split('\n').join('<br>')
+      );
   }
 }
 
