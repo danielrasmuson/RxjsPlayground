@@ -7,8 +7,10 @@
 <body>
 
 
-	<script src="../jspm_packages/system.js"></script>
-	<script src="config.js"></script>
+  <x-foo></x-foo>
+
+	<script src="jspm_packages/system.js"></script>
+	<script src="jspm.browser.js"></script>
   <script type="text/javascript">
     System.trace = true;
     System.import('src/app.js').catch(console.error.bind(console));
