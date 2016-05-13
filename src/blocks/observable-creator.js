@@ -2,6 +2,13 @@ import './rx-block.js';
 
 var proto = Object.create(HTMLElement.prototype);
 
+// When the user changes the code of the observable 
+// we call the created callback with the string 
+// fo the observable to create
+proto.onObservableCreated = (registerCallback)=>{
+  proto.created = registerCallback
+}
+
 proto.createdCallback = function() {
   var codeString = `
     Rx.Observable.create((observer)=>{
@@ -12,6 +19,10 @@ proto.createdCallback = function() {
       observer.complete();
     });
   `
+
+  setTimeout(()=>{
+    proto.created(codeString);
+  }, 10)
 
   const root = this.createShadowRoot();
   root.innerHTML = `
@@ -26,4 +37,4 @@ proto.createdCallback = function() {
 
 };
 
-var AddBlockButton = document.registerElement('add-block-button', {prototype: proto});
+document.registerElement('observable-creator', {prototype: proto});

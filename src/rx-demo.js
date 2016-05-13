@@ -1,19 +1,19 @@
-import './blocks/add-block.js'; 
+import './blocks/observable-creator.js'; 
 import './chart/line-chart.js';
 
 var proto = Object.create(HTMLElement.prototype);
 proto.createdCallback = function() {
   const root = this.createShadowRoot();
 
-  function assignLineChartNewObservable(){
-    lineChart.setAttribute('data-observable', codeString);
-  }
-
   root.innerHTML = `
-    <add-block-button></add-block-button>
+    <observable-creator></observable-creator>
     <line-chart></line-chart>
   `;
   const lineChart = root.querySelector('line-chart');
+  const observableCreator = root.querySelector('observable-creator');
+  observableCreator.onObservableCreated((observableCodeString)=>{
+    lineChart.setAttribute('data-observable', observableCodeString);
+  });
 
 
 };
