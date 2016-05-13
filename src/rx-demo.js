@@ -3,14 +3,12 @@ import './chart/line-chart.js';
 
 var proto = Object.create(HTMLElement.prototype);
 proto.createdCallback = function() {
-  const root = this.createShadowRoot();
-
-  root.innerHTML = `
+  this.innerHTML = `
     <observable-creator></observable-creator>
     <line-chart></line-chart>
   `;
-  const lineChart = root.querySelector('line-chart');
-  const observableCreator = root.querySelector('observable-creator');
+  const lineChart = this.querySelector('line-chart');
+  const observableCreator = this.querySelector('observable-creator');
   observableCreator.onObservableCreated((observableCodeString)=>{
     lineChart.newDataSubscription(observableCodeString)
   });

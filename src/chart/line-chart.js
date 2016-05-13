@@ -5,14 +5,13 @@ import {data, options} from './line-chart-json.js';
 var proto = Object.create(HTMLElement.prototype);
 var lineChart;
 proto.createdCallback = function() {
-  const root = this.createShadowRoot();
-  root.innerHTML = `
+  this.innerHTML = `
     <div>
       <canvas></canvas>
     </div>
   `;
 
-  var ctx = root.querySelector('canvas').getContext('2d')
+  var ctx = this.querySelector('canvas').getContext('2d')
   lineChart = new Chart(ctx, {
     type: 'line',
     data: data,
@@ -28,7 +27,7 @@ proto.newDataSubscription = (observableString)=>{
     if (lastSubscription){
       lastSubscription.unsubscribe();
     }
-    var lastSubscription = eval(observableString).subscribe((number)=>{
+    lastSubscription = eval(observableString).subscribe((number)=>{
       lineChart.data.datasets[0].data = lineChart.data.datasets[0].data.slice(1, 5).concat(number);
       lineChart.update();
     });

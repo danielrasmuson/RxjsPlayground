@@ -25,22 +25,13 @@ Rx.Observable.create((observer)=>{
 ```
 
 ```
-.map((result)=>{
-    return Rx.Observable.of(result).delay(500);
-})
+.takeUntil(Rx.Observable.timer(5000))
 ```
 
 ```
-.map((result)=>{
-    return Rx.Observable.of(result).delay(500);
-}).concatAll()
+.takeUntil(Rx.Observable.fromEvent(document.querySelector('line-chart'), 'click'))
 ```
 
-```
-.concatMap((result)=>{
-    return Rx.Observable.of(result).delay(500);
-})
-```
 
 
 
