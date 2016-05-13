@@ -7,6 +7,10 @@ Demo
 ```
 
 ```
+.take(1)
+```
+
+```
 .map((result)=>{
     return Rx.Observable.of(result).delay(500);
 })

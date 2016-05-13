@@ -22,7 +22,7 @@ proto.createdCallback = function() {
 
 proto.newDataSubscription = (observableString)=>{
   try{
-    console.log('Running Observable', observableString);
+    // console.log('Running Observable', observableString);
     eval(observableString).subscribe((number)=>{
       lineChart.data.datasets[0].data = lineChart.data.datasets[0].data.slice(1, 5).concat(number);
       lineChart.update();

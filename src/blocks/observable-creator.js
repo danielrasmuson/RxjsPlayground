@@ -37,6 +37,11 @@ var defaultObservable =
   }
   root.run = ()=>{
     proto.created(_.trim(blocks.textContent))
+    Array.from(blocks.querySelectorAll('rx-block')).forEach((node)=>{
+      if (_.trim(node.textContent).length === 0){
+        node.remove();
+      };
+    })
   }
 
   // Set the default node
