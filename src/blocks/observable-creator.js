@@ -17,12 +17,13 @@ proto.createdCallback = function() {
       observer.next(45);
       observer.next(65);
       observer.complete();
-    });
+    })
   `
 
   const root = this.createShadowRoot();
   root.innerHTML = `
     <button onclick="this.parentNode.addBlock()">Add Block</button>
+    <button onclick="this.parentNode.run()">Run</button>
     <ul id="blocks"></ul>
   `;
   const blocks = root.querySelector('#blocks');
@@ -32,14 +33,12 @@ proto.createdCallback = function() {
       block.setAttribute('value', defaultCodeString);
     }
     blocks.appendChild(block);
-
-    // TODO
-    // maybe watch children for changes instead
-    setTimeout(()=>{
-      proto.created(_.trim(blocks.textContent))
-    }, 0) 
+  }
+  root.run = ()=>{
+    proto.created(_.trim(blocks.textContent))
   }
 
+  // Set the default node
   root.addBlock(defaultObservable)
 
 };
