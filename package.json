@@ -9,9 +9,14 @@
     "directories": {
       "lib": "src"
     },
-    "dependencies": {},
+    "dependencies": {
+      "lodash": "npm:lodash@^4.12.0"
+    },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.10"
+    },
+    "peerDependencies": {
+      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha"
     }
   },
   "scripts": {

@@ -1,12 +1,16 @@
+import './rx-block.js';
+
 var proto = Object.create(HTMLElement.prototype);
 
 proto.createdCallback = function() {
-  var root = this.createShadowRoot();
+  const root = this.createShadowRoot();
   root.innerHTML = `
     <button onclick="this.parentNode.addBlock()">Add Block</button>
+    <ul id="blocks"></ul>
   `;
+  const blocks = root.querySelector('#blocks');
   root.addBlock = ()=>{
-    alert('add block');
+    blocks.appendChild(document.createElement('rx-block'));
   }
 };
 
